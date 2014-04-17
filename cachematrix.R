@@ -5,10 +5,10 @@
 ## that enable more efficient inverse access using cacheSolve.
 
 makeCacheMatrix <- function(x = matrix()) {
-    i <- NULL
+    i <- NULL ## default inverse value 
     set <- function(y) {
         x <<- y
-        i <<- NULL
+        i <<- NULL ## default inverse value 
     }
     get <- function() x
     setinverse <- function(inverse) i <<- inverse 
@@ -26,12 +26,13 @@ makeCacheMatrix <- function(x = matrix()) {
 
 cacheSolve <- function(x, ...) {
     i <- x$getinverse()
-    if(!is.null(i)) {
-        message("getting cached data")
+    ## if the inverse has been calculated already, access it
+    if(!is.null(i)) { 
+        message("getting cached inverse")
         return(i)
     }
     data <- x$get()
-    i <- solve(data, ...) #alternatively, could have used corpcor package
+    i <- solve(data, ...) ## alternatively, could have used corpcor package for inverse calculation
     x$setinverse(i)
     i
 }
