@@ -1,5 +1,7 @@
 ## makeCacheMatrix and cacheSolve together enable a faster access of matrix inverse after
 ## the initial calculation, through "caching" the inverse of the given matrix.
+## Both functions are largely based on the makeVector() and cachemean() functions, provided in the
+## Programming Assignment 2 instructions
 
 ## makeCacheMatrix creates a "special" matrix and returns a list of 4 functions 
 ## that enable more efficient inverse access using cacheSolve.
